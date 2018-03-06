@@ -13,6 +13,7 @@ process.stdin.on("data", data => {
 
   if (cmd === "pwd") {
     pwd(args);
+    
   } else if (cmd === "ls") {
     ls(args);
   } else if (cmd === "cat") {
@@ -20,5 +21,5 @@ process.stdin.on("data", data => {
   } else {
     process.stdout.write("You typed: " + cmd);
   }
-  process.stdout.write("\nprompt > ");
+  
 });
