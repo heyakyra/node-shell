@@ -1,6 +1,7 @@
 const pwd = require("./pwd");
 const ls = require("./ls");
 const cat = require("./cat");
+const curl = require("./curl");
 process.stdout.write("prompt > ");
 
 process.stdin.on("data", data => {
@@ -12,14 +13,21 @@ process.stdin.on("data", data => {
   const args = input.slice(1);
 
   if (cmd === "pwd") {
-    pwd(args);
+    pwd(args, done);
     
+  } else if (cmd === "curl") {
+    curl(args, done);
   } else if (cmd === "ls") {
-    ls(args);
+    ls(args, done);
   } else if (cmd === "cat") {
-    cat(args);
+    cat(args, done);
   } else {
     process.stdout.write("You typed: " + cmd);
   }
   
 });
+
+const done = (output) => {
+  process.stdout.write(output);
+  process.stdout.write("\nprompt > ");
+}
